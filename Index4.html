@@ -301,7 +301,7 @@
         <!-- (2) -->
         <section class="panel panel-2">
             <div class="export-bar">
-                <input id="toEmail" type="email" placeholder="입양 받을 이메일 주소를 입력하세요." />
+                <input id="toEmail" type="email" placeholder="맘머스를 만날 이메일 주소를 입력하세요." />
                 <button id="exportBtn" type="button">휙 뺏어가기</button>
             </div>
 
@@ -313,10 +313,10 @@
         <!-- (3) -->
         <section class="panel panel-3" style="padding:0;">
             <div id="popupPanel">
-                <!-- ✅ 우측 상단 입양하기 -->
+                <!-- ✅ 우측 상단 하기 -->
                 <div class="adopt-box" id="adoptBoxTopRight">
                     <input type="checkbox" id="popupCheck" />
-                    <label for="popupCheck">입양하기</label>
+                    <label for="popupCheck">가져가기</label>
                 </div>
 
                 <div class="popup-header">
@@ -3296,7 +3296,7 @@
             if (popupCheckEl.checked) selectedIds.add(currentEmailKey);
             else selectedIds.delete(currentEmailKey);
 
-            setNotice(`입양예정: ${selectedIds.size}개`, "info");
+            setNotice(`과거의 수: ${selectedIds.size}개`, "info");
         });
 
         function getSelectedEmails() {
@@ -3391,13 +3391,13 @@ async function sendMailAuto({ to, subject, text }) {
 
                 const to = (document.getElementById("toEmail").value || "").trim();
                 if (!to) {
-                    setNotice("입양 받을 이메일 주소를 입력하세요.", "error");
+                    setNotice("맘머스를 만날 이메일 주소를 입력하세요.", "error");
                     return;
                 }
 
                 const selected = getSelectedEmails();
                 if (selected.length === 0) {
-                    setNotice("아래에서 '입양하기'를 체크해주세요. ", "error");
+                    setNotice("아래에서 '가져가기'를 체크해주세요. ", "error");
                     return;
                 }
 
