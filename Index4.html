@@ -2,6 +2,10 @@
 <html lang="ko">
 
 <head>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("u0GE2H0mnqCsFpmTc");</script>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>맘머스가 너무나도 보고 싶다</title>
@@ -3312,28 +3316,15 @@
                 return `===== ${i + 1} / ${selected.length} =====\n${info}\n`;
             }).join("\n");
         }
-
-const API_BASE = "https://sayinggoodbyemy22yearoldhome-production.up.railway.app";
         
-        async function sendMailAuto({ to, subject, text }) {
-            const res = await fetch(`${API_BASE}/send`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ to, subject, text })
-            });
-
-            let data = null;
-            try { data = await res.json(); } catch (e) { }
-
-            if (!res.ok || (data && data.ok === false)) {
-                const msg = (data && (data.error || data.message)) ? (data.error || data.message) : `HTTP ${res.status}`;
-                const err = new Error(msg);
-                err.httpStatus = res.status;
-                throw err;
-            }
-            return data;
-        }
-
+async function sendMailAuto({ to, subject, text }) {
+    await emailjs.send(
+        "service_63jsa7b",
+        "template_l9zx5re",
+        { to_email: to, subject: subject, message: text },
+        "u0GE2H0mnqCsFpmTc"
+    );
+}
         let els = [];
 
         function initElements() {
