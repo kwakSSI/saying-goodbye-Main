@@ -3305,7 +3305,7 @@
         }
 
         function buildEmailSubject(selected) {
-            const prefix = "[외딴 집 안녕하세요!] ";
+            const prefix = "[그 아이에게 고맙게도 맘머스가 보고 싶은 그쪽에게] ";
             const titles = selected.map(e => (e.name || "(제목 없음)").toString()).join("\n");
             return prefix + titles;
         }
